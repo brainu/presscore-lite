@@ -14,29 +14,36 @@
 <?php } ?>
     <div id="container">
         <div id="content" role="main">
-		  <?php if(bools('d_index_shout')) {?>
-  <?php query_posts( $query_string . 'post_type=shout&showposts=1' );while (have_posts()) : the_post(); ?>
-            <div id="dasheng-index" class="entry-common entry-dasheng clearfix">
-<a class="yahei entry-shout-title" href="<?php bloginfo('url');?>/shout">呐喊</a>
-<a class="entry-dasheng-inner clearfix" title="点击查看解读全文 » " href="<?php the_permalink() ?>" rel="external" target="_blank">
-<div class="dasheng_content clearfix">
-<blockquote>
-<span><?php $key="shout-text"; echo get_post_meta($post->ID, $key, true); ?></span>
-</blockquote>
-<div class="dasheng_original t-r">
-<span>—— <?php $key="shout-author"; echo get_post_meta($post->ID, $key, true); ?></span>
-</div>
-</div>
-<div class="dasheng_comment clearfix">
-<p>
-<span class="bold">《<?php the_title();?>》：</span>
-<?php echo mb_strimwidth(strip_tags(apply_filters('the_content', $post->post_content)), 0, 100,"……"); ?>
-</p>
-</div>
-</a>
-</div>
-            <?php endwhile;wp_reset_query(); ?>
-			<?php } ?>
+            <?php if(bools('d_index_shout')) {?>
+                <?php
+
+
+                $args = array( 'posts_per_page' => 1, 'post_type'=> 'shout');
+
+                $myposts = get_posts( $args );
+                foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
+                    <div id="dasheng-index" class="entry-common entry-dasheng clearfix">
+                        <a class="yahei entry-shout-title" href="<?php bloginfo('url');?>/shout">呐喊</a>
+                        <a class="entry-dasheng-inner clearfix" title="点击查看解读全文 » " href="<?php the_permalink() ?>" rel="external" target="_blank">
+                            <div class="dasheng_content clearfix">
+                                <blockquote>
+                                    <span><?php $key="shout-text"; echo get_post_meta($post->ID, $key, true); ?></span>
+                                </blockquote>
+                                <div class="dasheng_original t-r">
+                                    <span>—— <?php $key="shout-author"; echo get_post_meta($post->ID, $key, true); ?></span>
+                                </div>
+                            </div>
+                            <div class="dasheng_comment clearfix">
+                                <p>
+                                    <span class="bold">《<?php the_title();?>》：</span>
+                                    <?php echo mb_strimwidth(strip_tags(apply_filters('the_content', $post->post_content)), 0, 100,"……"); ?>
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach;
+                wp_reset_postdata();?>
+            <?php } ?>
             <?php
             while (have_posts()) : the_post();
                 ?>
