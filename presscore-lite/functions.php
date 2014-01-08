@@ -936,7 +936,7 @@ function fs_ajax_pagenavi(){
     }
 }
 
-wp_enqueue_script( 'base', true);
+wp_enqueue_script( 'base', get_template_directory_uri() . '/js/global.js', array(), '1.17', true);
 wp_localize_script('base', 'O_Connor', array(       
         "um_ajaxurl" => admin_url('admin-ajax.php')
     ));
