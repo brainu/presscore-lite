@@ -26,6 +26,6 @@
 <?php } ?>
 
 
-
+<script src="<?php bloginfo('stylesheet_directory'); ?>/js/global.js?20130801"></script>
 <script src="<?php bloginfo('stylesheet_directory'); ?>/js/jquery.flexslider-min.js?20130801"></script>
 </body></html>
