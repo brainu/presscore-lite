@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
 		$submit.attr('disabled', true).fadeTo('slow', 0.5);
 		/** Ajax */
 		$.ajax( {
-			url: O_Connor.um_ajaxurl,
+			url: um_ajaxurl,
 			data: $(this).serialize() + "&action=ajax_comment",
 			type: $(this).attr('method'),
 

@@ -19,6 +19,7 @@
     <?php if ( is_singular() ){ ?>
     var fspostid ="<?php echo $post->ID?>";
     var fsajaxurl ="<?php bloginfo('url');?>";
+	var um_ajaxurl = "<?php echo admin_url('admin-ajax.php');?>"
     <?php } ?>
 </script>
 <?php if ( is_singular() ){ ?>
