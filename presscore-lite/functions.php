@@ -1094,6 +1094,5 @@ function ajax_comment_err($a) {
     <?php }
     include_once('include/widget.php');
     include_once('include/themeset.php');
-    include_once('include/permalinks.php');
     include_once('include/user-agent.php');
     ?>

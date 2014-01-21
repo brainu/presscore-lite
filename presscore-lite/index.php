@@ -1,17 +1,5 @@
 <?php get_header() ;?>
-<?php if ( bools('d_recommend_list_b')&&!wp_is_mobile()){ ?>
-    <div id="recommend-wrap" class="fullwidth clearfix">
-        <div id="recommend-post" class="clearfix recommend-post">
-            <ul class="slides clearfix">
-                <?php query_posts( $query_string . 'orderby=rand&showposts=8' );while(have_posts()) : the_post(); ?>
-                    <li class="ifanr-recommend-item"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"> <span class="ifanr-recommend-title">
-    <?php the_title(); ?>
-    </span><?php post_thumbnail( 220,130 ); ?></a></li>
-                <?php endwhile;wp_reset_query() ?>
-            </ul>
-        </div>
-    </div>
-<?php } ?>
+<?php get_template_part( 'random','posts');?>
     <div id="container">
         <div id="content" role="main">
             <?php if(bools('d_index_shout')) {?>
