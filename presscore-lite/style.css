@@ -5,7 +5,7 @@ Description:仿爱范儿主题，精简版
 Support:zh_CN
 Author:Bigfa
 Author URI:http://fatesinger.com
-Version:3.0.0
+Version:3.0.1
 Tags:iFanr,light
 */
 
@@ -54,7 +54,7 @@ code{background-color:#F7F7F9;border:1px solid #E1E1E8;color:#DD1144;padding:2px
 .top-nav li{float:left}
 .top-nav a{float:left;margin:10px 12px 0 0;margin:0.625rem 0.75rem 0 0;color:#fff;text-decoration:none;font-weight:700;text-shadow:#2A2A2A 0 4px 2px;-webkit-font-smoothing:antialiased}
 .top-nav a:hover{color:#eee}
-#navigation{height:38px;height:2.375rem;position:relative;background:whiteSmoke;box-shadow:0 2px 4px #ddd;box-shadow:0 0.125rem 0.25rem #ddd}
+#navigation{height:38px;height:2.375rem;position:relative;background:whiteSmoke;}
 .right-banner{position:absolute;right:0;top:0}
 .nav-right{margin:7px 20px 0 0}
 .nav-right a.show-search{background:url("img/icon.png") no-repeat scroll -88px 6px;transparent;display:block;float:left;height:24px;margin-left:1px;width:40px;position:relative}
@@ -110,7 +110,7 @@ code{background-color:#F7F7F9;border:1px solid #E1E1E8;color:#DD1144;padding:2px
 .page-btn{overflow:hidden;position:absolute;bottom:10px;left:50%;_top:164px}
 .page-btn li{background:#ddd;display:inline-block;height:6px;width:6px;display:inline;float:left;overflow:hidden;text-indent:-9em;margin:0 8px 2px 10px;line-height:0;font-size:0;-moz-border-radius:3px;-webkit-border-radius:3px;-o-border-radius:3px;border-radius:3px;-webkit-text-size-adjust:none;-moz-text-size-adjust:none;cursor:pointer}
 .page-btn .selected{background:#cd7b00}
-#recommend-wrap{background:none repeat scroll 0 0 #FFFFFF;margin-top:20px}
+#recommend-wrap{background:#FFFFFF;padding-top:20px;border-top: 3px solid #333333;}
 #recommend-post{border-bottom:1px solid #DDDDDD;background:url("img/ajaxload.gif") no-repeat scroll center center transparent;margin:0 20px;overflow:hidden;padding:0 0 20px;position:relative;height:130px}
 #recommend-post .slides{background:#fff;overflow:hidden}
 .ifanr-recommend-item{float:left;height:130px;margin-right:20px;overflow:hidden;position:relative;width:220px}
@@ -175,7 +175,7 @@ code{background-color:#F7F7F9;border:1px solid #E1E1E8;color:#DD1144;padding:2px
 .brick em{color:#aaa;font-style:italic}
 .category-content .post-thumb{width:100%;float:left}
 .category-content .post-thumb img{float:left;margin:6px 20px 10px 0;width:200px;height:140px;padding:0;border:0}
-.content-page{margin:5px 20px;font-size:13px;background-color:#F4FCFF;background-color:white;height:36px;line-height:36px;text-align:center;overflow:hidden;padding:1em 4px 4px;clear:both}
+.content-page{margin:5px 20px;font-size:13px;background-color:#F4FCFF;background-color:white;height:36px;line-height:36px;text-align:center;padding:1em 4px 4px;clear:both}
 .content-page a{padding:3px 8px;margin:2px;text-decoration:none}
 .content-page a.current,.content-page a:hover{font-weight:400;color:white;background-color:#D14836}
 #content.main-page{margin-left:140px;border-right:0}
@@ -421,7 +421,7 @@ ol.comment-list li .children{margin-left:50px}
 .clearfix:after{clear:both}
 .dasheng-index{position:relative;padding:20px 0;border-bottom:1px #eee dotted}
 .dasheng-index .entry-dasheng-title{background:none repeat scroll 0 0 #D14836;color:#FFFFFF;font-size:14px;height:25px;left:0;line-height:25px;padding:0 20px;position:absolute;top:26px;width:30px}
-.entry-dasheng-inner{background:none repeat scroll 0 0 #EEEEEE;border:1px solid #DDDDDD;display:inline-block;padding:10px}
+.entry-dasheng-inner{background:#EEEEEE;display:inline-block;padding:10px}
 .entry-dasheng-inner .dasheng_content{display:block;margin:20px 0 10px;padding:10px 10px 0}
 .t-r{text-align:right}
 .dasheng-index .dasheng_comment{border-top:1px solid #DDDDDD;margin:10px;padding-top:10px}
@@ -508,7 +508,7 @@ a#slider_close_button{float:right}
 .flex-control-paging li a:hover{box-shadow:0 0 5px rgba(0,0,0,0.75) inset}
 .flex-control-paging li a.flex-active{background:none repeat scroll 0 0 #E95C37;box-shadow:0 2px 1px rgba(0,0,0,0.25) inset}
 .home #cat-list{display:block}
-#cat-list{background:none repeat scroll 0 0 #FFFFFF;box-shadow:0 2px 4px #DDDDDD;display:none;position:relative;z-index:999}
+#cat-list{background-color:#FFFFFF;display:none;position:relative;z-index:999}
 #cat-list-inner{background:none repeat scroll 0 0 #F5F5F5}
 #cat-list .border{background:none repeat scroll 0 0 #000000;height:3px;width:100%}
 #cat-list .cat-list-item{float:left;height:285px;overflow:hidden;padding:0 20px 20px;text-align:left;width:439px}
@@ -645,7 +645,6 @@ a#slider_close_button{float:right}
 .main-shout .shout_comment h3{border-bottom:1px dotted #AAAAAA;margin-bottom:5px;padding-bottom:5px}
 #dasheng-index{position:relative;padding:20px 0;border-bottom:1px #eee dotted}
 #dasheng-index .entry-shout-title{background:none repeat scroll 0 0 #D14836;color:#FFFFFF;font-size:14px;height:25px;left:0;line-height:25px;padding:0 20px;position:absolute;top:6px;width:30px}
-.entry-dasheng-inner{background:none repeat scroll 0 0 #EEEEEE;border:1px solid #DDDDDD;display:inline-block;padding:10px}
 .entry-dasheng-inner .dasheng_content{display:block;margin:20px 0 10px;padding:10px 10px 0}
 .t-r{text-align:right}
 #dasheng-index .dasheng_comment{border-top:1px solid #DDDDDD;margin:10px;padding-top:10px}

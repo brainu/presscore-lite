@@ -201,7 +201,7 @@ class bigfa_widget4 extends WP_Widget {
             <?php query_posts( array('showposts' => $limit,'cat' => $cateid,));?>
             <?php while (have_posts()) : the_post(); ?>
                 <li><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title(); ?></a></li>
-            <?php endwhile;wp_reset_query(); ?>
+            <?php endwhile; ?>
         </ul>
 
         <?php

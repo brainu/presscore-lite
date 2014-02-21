@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
 		$submit.attr('disabled', true).fadeTo('slow', 0.5);
 		/** Ajax */
 		$.ajax( {
-			url: um_ajaxurl,
+			url: O_Connor.um_ajaxurl,
 			data: $(this).serialize() + "&action=ajax_comment",
 			type: $(this).attr('method'),
 
@@ -211,13 +211,14 @@ function grin(a) {
 
 jQuery(document).ready(function(a) {
 	var l = a(".commentshow"),
-	y = fspostid,
-	r = fsajaxurl,
+	
+	r = O_Connor.ajaxurl,
 	z = '<div id="loading-comments"></div>';
 	l.on("click", ".commentnav a",
 	function(b) {
 		b.preventDefault();
 		var b = a(this).attr("href"),
+		y = a(this).parent().data("id"),
 		c = 1,
 		j = a("#cancel-comment-reply-link");
 		/comment-page-/i.test(b) ? c = b.split(/comment-page-/i)[1].split(/(\/|#|&).*$/)[0] : /cpage=/i.test(b) && (c = b.split(/cpage=/)[1].split(/(\/|#|&).*$/)[0]);

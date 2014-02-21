@@ -1,4 +1,46 @@
 <?php
+function mfthemes_stylesheet( ){
+    global $pagenow;
+    if(!is_admin()){
+        $timer = @filemtime(TEMPLATEPATH .'/style.css');
+        wp_enqueue_style('style', get_bloginfo('stylesheet_url'), array(), $timer, 'screen');
+    }
+
+}
+
+add_action('wp_enqueue_scripts', 'mfthemes_stylesheet');
+function bigfa_theme_scripts() {
+    global $pagenow;
+    if(!is_admin()){
+        $dir = get_template_directory_uri();
+        $title =get_bloginfo('name');
+        $is_mobile ='';
+        if(wp_is_mobile()){
+            $is_mobile = 'true';
+        }
+        $ajaxurl = home_url("/");
+        wp_enqueue_script( 'jquerylib', $dir . '/js/jquery-1.10.2.min.js' , array(), '1.10.2', false);
+        wp_enqueue_script( 'base', $dir . '/js/global.js', array(), '1.19', true);
+		if( is_singular() ){
+		wp_enqueue_script( 'single', $dir . '/js/single.js', array(), '1.19', true);
+		}
+		if( bools('d_recommend_list_b') ){
+		wp_enqueue_script( 'slider', $dir . '/js/jquery.flexslider-min.js', array(), '1.19', true);
+		}
+
+        wp_localize_script('base', 'O_Connor', array(
+            'admin_ajax_url' => admin_url('admin-ajax.php'),
+            "is_mobile" => $is_mobile,
+            "ajaxurl" => $ajaxurl,
+            "um_ajaxurl" => admin_url('admin-ajax.php'),
+            "site_title" => $title,
+
+
+        ));
+    }
+
+}
+add_action('wp_enqueue_scripts', 'bigfa_theme_scripts');
 /**
  * Fatesinger <header> in the theme.
  *
@@ -511,9 +553,6 @@ function disable_dashboard_widgets() {
 //add_action('admin_menu', 'disable_dashboard_widgets');
 
 
-if ( !is_admin() ) { function my_init_method() { wp_deregister_script( 'jquery' );  }
-    add_action('init', 'my_init_method'); }
-wp_deregister_script( 'l10n' );
 
 if( bools('d_bigfa_showbox_b') ){
     add_filter('the_content', 'addhighslideclass_replace');
@@ -526,10 +565,6 @@ function addhighslideclass_replace ($content)
     $content = preg_replace($pattern, $replacement, $content);
     return $content;
 }
-if ( !is_admin() ){
-    $timer = @filemtime(TEMPLATEPATH .'/style.css');
-    $dir = get_bloginfo('template_directory');
-    wp_enqueue_script( 'jquerylib', $dir . '/js/jquery.js', array(), '1.7', false);}
 
 
 function link_to_menu_editor( $args )
@@ -929,7 +964,7 @@ function fs_ajax_pagenavi(){
         echo '<ol class="comment-list" >';
         wp_list_comments('callback=devecomment&type=comment&page=' . $pageid . '&per_page=' . get_option('comments_per_page'), $comments);
         echo '</ol>';
-        echo '<nav class="commentnav">';
+        echo '<nav class="commentnav" data-id="'.$postid.'">';
         paginate_comments_links('current=' . $pageid . '&prev_text=«&next_text=»');
         echo '</nav>';
         die;

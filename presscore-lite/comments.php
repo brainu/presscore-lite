@@ -23,7 +23,7 @@
                 <ol class="comment-list" >
                     <?php wp_list_comments('type=comment&callback=devecomment&max_depth=10000'); ?>
                 </ol>
-                <nav class="commentnav">
+                <nav class="commentnav" data-id="<?php echo $post->ID?>">
                     <?php paginate_comments_links('prev_text=«&next_text=»');?>
                 </nav>
             </div>
