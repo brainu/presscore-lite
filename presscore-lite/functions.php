@@ -1,5 +1,5 @@
 <?php
-function mfthemes_stylesheet( ){
+function bigfa_stylesheet( ){
     global $pagenow;
     if(!is_admin()){
         $timer = @filemtime(TEMPLATEPATH .'/style.css');
@@ -8,7 +8,7 @@ function mfthemes_stylesheet( ){
 
 }
 
-add_action('wp_enqueue_scripts', 'mfthemes_stylesheet');
+add_action('wp_enqueue_scripts', 'bigfa_stylesheet');
 function bigfa_theme_scripts() {
     global $pagenow;
     if(!is_admin()){
