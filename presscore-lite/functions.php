@@ -7,7 +7,14 @@ function bigfa_stylesheet( ){
     }
 
 }
-
+add_filter ('the_content', 'lazyload');
+function lazyload($content) {
+$loadimg_url=get_bloginfo('template_directory').'/img/grey.gif';
+	if(!is_feed()||!is_robots) {
+		$content=preg_replace('/<img(.+)src=[\'"]([^\'"]+)[\'"](.*)>/i',"<img\$1data-original=\"\$2\" src=\"$loadimg_url\"\$3>",$content);
+	}
+	return $content;
+}
 add_action('wp_enqueue_scripts', 'bigfa_stylesheet');
 function bigfa_theme_scripts() {
     global $pagenow;
@@ -21,6 +28,7 @@ function bigfa_theme_scripts() {
         $ajaxurl = home_url("/");
         wp_enqueue_script( 'jquerylib', $dir . '/js/jquery-1.10.2.min.js' , array(), '1.10.2', false);
         wp_enqueue_script( 'base', $dir . '/js/global.js', array(), '1.19', true);
+		wp_enqueue_script( 'lazyload', $dir . '/js/jquery.lazyload.js', array(), '1.19', true);
 		if( is_singular() ){
 		wp_enqueue_script( 'single', $dir . '/js/single.js', array(), '1.19', true);
 		}
@@ -685,16 +693,16 @@ function post_thumbnail( $width = 255,$height = 130 ){
     global $post;
     if( has_post_thumbnail() ){
         $timthumb_src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID),'full');
-        $post_timthumb = '<img src="'.get_bloginfo("template_url").'/timthumb.php?src='.$timthumb_src[0].'&amp;h='.$height.'&amp;w='.$width.'&amp;zc=1" alt="'.$post->post_title.'" class="thumb" title="'.get_the_title().'"/>';
+        $post_timthumb = '<img src="'.get_bloginfo('template_directory').'/img/grey.gif" data-original="'.get_bloginfo("template_url").'/timthumb.php?src='.$timthumb_src[0].'&amp;h='.$height.'&amp;w='.$width.'&amp;zc=1" alt="'.$post->post_title.'" class="thumb" title="'.get_the_title().'"/>';
         echo $post_timthumb;
     } else {
         $content = $post->post_content;
         preg_match_all('/<img.*?(?: |\\t|\\r|\\n)?src=[\'"]?(.+?)[\'"]?(?:(?: |\\t|\\r|\\n)+.*?)?>/sim', $content, $strResult, PREG_PATTERN_ORDER);
         $n = count($strResult[1]);
         if($n > 0){
-            echo '<img src="'.get_bloginfo("template_url").'/timthumb.php?w='.$width.'&amp;h='.$height.'&amp;src='.$strResult[1][0].'" title="'.get_the_title().'" alt="'.get_the_title().'"/>';
+            echo '<img src="'.get_bloginfo('template_directory').'/img/grey.gif" data-original="'.get_bloginfo("template_url").'/timthumb.php?w='.$width.'&amp;h='.$height.'&amp;src='.$strResult[1][0].'" title="'.get_the_title().'" alt="'.get_the_title().'"/>';
         } else {
-            echo '<img src="'.get_bloginfo("template_url").'/timthumb.php?w='.$width.'&amp;h='.$height.'&amp;src='.get_bloginfo('template_url').'/img/random/'.rand(1,9).'.jpg" title="'.get_the_title().'" alt="'.get_the_title().'"/>';
+            echo '<img src="'.get_bloginfo('template_directory').'/img/grey.gif" data-original="'.get_bloginfo("template_url").'/timthumb.php?w='.$width.'&amp;h='.$height.'&amp;src='.get_bloginfo('template_url').'/img/random/'.rand(1,9).'.jpg" title="'.get_the_title().'" alt="'.get_the_title().'"/>';
         }
     }
 }
