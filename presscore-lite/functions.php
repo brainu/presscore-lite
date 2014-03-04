@@ -477,7 +477,7 @@ function get_author_level($comment_author_email,$user_id){
  */
 
 function presscore_relatedpost() {
-
+	global $post;
     echo '<div class="rlt-post"><div class="bfd_title"><h3>暧昧帖</h3></div><div class="bfd_content"><ul>';
     $post_num = 8;
     $exclude_id = $post->ID;
