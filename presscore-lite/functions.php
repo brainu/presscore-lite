@@ -32,9 +32,9 @@ function bigfa_theme_scripts() {
 		if( is_singular() ){
 		wp_enqueue_script( 'single', $dir . '/js/single.js', array(), '1.19', true);
 		}
-		if( bools('d_recommend_list_b') ){
+		
 		wp_enqueue_script( 'slider', $dir . '/js/jquery.flexslider-min.js', array(), '1.19', true);
-		}
+		
 
         wp_localize_script('base', 'O_Connor', array(
             'admin_ajax_url' => admin_url('admin-ajax.php'),
